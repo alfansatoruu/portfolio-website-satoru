@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern MacOS Interface</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .text-shadow {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .dock-item:hover {
+      transform: scale(1.5);
+    }
+
+    .dock-item:hover~.dock-item {
+      transform: scale(1.2);
+    }
+
+    .folder-window {
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .folder-window.hidden {
+      opacity: 0;
+      transform: translate(-50%, -40%);
+      pointer-events: none;
+    }
+
+    .folder-window.visible {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .nav-item.active {
+      background-color: rgb(59, 130, 246);
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#262626] overflow-hidden">
+  <img src="images/samurai.jpg" alt="Desktop Background" class="fixed inset-0 w-full h-full object-cover">
+
+  <!-- Menu Bar -->
+  <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-md px-4 py-2 flex justify-between items-center z-40">
+    <div class="flex items-center space-x-6">
+      <img src="/api/placeholder/20/20" class="w-5 h-5 invert hover:scale-110 transition-transform duration-300"
+        alt="Logo">
+      <span class="text-white font-semibold px-3 py-1 rounded bg-white/20">ALVAN</span>
+      <div class="hidden md:flex space-x-4 text-white/90">
+        <span class="hover:bg-white/10 px-3 py-1 rounded transition-colors duration-300 cursor-pointer">File</span>
+        <span class="hover:bg-white/10 px-3 py-1 rounded transition-colors duration-300 cursor-pointer">Edit</span>
+        <span class="hover:bg-white/10 px-3 py-1 rounded transition-colors duration-300 cursor-pointer">View</span>
+        <span class="hover:bg-white/10 px-3 py-1 rounded transition-colors duration-300 cursor-pointer">Window</span>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center space-x-4 text-white">
+      <i class="fas fa-wifi hover:scale-110 transition-transform duration-300 cursor-pointer"></i>
+      <i class="fas fa-battery-three-quarters hover:scale-110 transition-transform duration-300 cursor-pointer"></i>
+      <span id="menuTime" class="text-sm"></span>
+    </div>
+  </nav>
+
+  <!-- Main Window -->
+  <div id="folderWindow"
+    class="folder-window hidden fixed top-1/2 left-1/2 w-screen h-[90vh] w-[100vh] max-w-5xl bg-white/95 rounded-xl shadow-2xl z-30">
+    <div class="bg-gray-200 p-4 rounded-t-xl flex items-center justify-between cursor-move" id="windowHeader">
+      <div class="flex space-x-2">
+        <button class="w-3 h-3 bg-red-500 rounded-full hover:bg-red-600 transition-colors duration-300"
+          id="closeWindow"></button>
+        <button class="w-3 h-3 bg-yellow-500 rounded-full hover:bg-yellow-600 transition-colors duration-300"
+          id="minimizeWindow"></button>
+        <button class="w-3 h-3 bg-green-500 rounded-full hover:bg-green-600 transition-colors duration-300"
+          id="maximizeWindow"></button>
+      </div>
+      <span class="text-gray-700 font-medium">Portfolio</span>
+      <div class="w-16"></div>
+    </div>
+
+    <div class="flex flex-col md:flex-row p-6 min-h-[500px]">
+      <!-- Sidebar Navigation -->
+      <div class="w-full md:w-48 bg-gray-100 rounded-lg p-4 mb-4 md:mb-0 md:mr-6">
+        <div id="aboutNav"
+          class="nav-item active px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer mb-2">
+          <i class="fas fa-user mr-2"></i>About
+        </div>
+        <div id="projectsNav"
+          class="nav-item hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer mb-2">
+          <i class="fas fa-code mr-2"></i>Projects
+        </div>
+        <div id="experienceNav"
+          class="nav-item hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer mb-2">
+          <i class="fas fa-briefcase mr-2"></i>Experience
+        </div>
+        <div id="contactNav"
+          class="nav-item hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer mb-2">
+          <i class="fas fa-envelope mr-2"></i>Contact
+        </div>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="flex-1 overflow-y-auto pr-2">
+        <!-- About Section -->
+        <div id="aboutSection" class="section active space-y-6">
+          <h1
+            class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Full Stack Developer
+          </h1>
+          <H3>Hi, I'M ALVAN</H3>
+          <p class="text-gray-600 leading-relaxed">
+            Passionate about creating elegant solutions to complex problems. Specialized in modern web technologies
+            and application development.
+          </p>
+          <div class="space-y-4">
+            <h2 class="text-2xl font-semibold text-gray-800">Key Skills</h2>
+            <div class="flex flex-wrap gap-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">React</span>
+              <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Node.js</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">TypeScript</span>
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Python</span>
+            </div>
+          </div>
+          <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full 
+                                hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-download mr-2"></i>Download Resume
+          </button>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projectsSection" class="section space-y-6">
+          <h2 class="text-3xl font-bold text-gray-800">Featured Projects</h2>
+          <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+              <div class="flex items-center space-x-4 mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-shopping-cart text-blue-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800">E-Commerce Platform</h3>
+              </div>
+              <p class="text-gray-600 mb-4">Full-stack e-commerce solution with React and Node.js</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-sm">React</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-sm">Node.js</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-sm">MongoDB</span>
+              </div>
+            </div>
+            <!-- Add more project cards here -->
+        </div>
+      </div>
+
+      <!-- Experience Section -->
+      <div id="experienceSection" class="section space-y-6">
+        <h2 class="text-3xl font-bold text-gray-800">Work Experience</h2>
+        <div class="space-y-8">
+          <div class="bg-white p-6 rounded-xl shadow-md">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800">Senior Full Stack Developer</h3>
+                <p class="text-blue-500">Tech Solutions Inc.</p>
+              </div>
+              <span class="text-gray-500">2021 - Present</span>
+            </div>
+            <p class="text-gray-600 mb-4">Leading development of enterprise web applications</p>
+            <ul class="space-y-2">
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-check-circle text-green-500"></i>
+                <span class="text-gray-600">Implemented microservices architecture</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-check-circle text-green-500"></i>
+                <span class="text-gray-600">Reduced loading time by 60%</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-check-circle text-green-500"></i>
+                <span class="text-gray-600">Mentored junior developers</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Add more experience items here -->
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div id="contactSection" class="section space-y-6">
+        <h2 class="text-3xl font-bold text-gray-800">Get in Touch</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <p class="text-gray-600">
+              Feel free to reach out for collaborations or just a friendly hello
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <i class="fas fa-envelope text-blue-500"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Email</p>
+                  <p class="text-gray-700">hellb2254@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input type="text"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea rows="4"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+            </div>
+            <button class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <!-- Desktop Icons -->
+  <div class="fixed top-24 left-8 text-center group cursor-pointer" id="portfolioFolder">
+    <div
+      class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-300">
+      <i class="fas fa-folder text-white text-3xl"></i>
+    </div>
+    <span class="text-white text-sm mt-2 block text-shadow">Portfolio</span>
+  </div>
+
+  <!-- Dock -->
+  <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-xl p-2 rounded-2xl z-40">
+    <div class="flex space-x-2">
+      <div class="dock-item group relative transition-transform duration-300">
+
+        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-sm px-3 py-1 
+                           rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Finder</span>
+      </div>
+
+
+
+
+
+
+      <div class="dock-item group relative transition-transform duration-300">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
+          <i class="fas fa-code text-white text-2xl"></i>
+        </div>
+        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-sm px-3 py-1 
+                         rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">VSCode</span>
+      </div>
+      <div class="dock-item group relative transition-transform duration-300">
+        <div class="w-12 h-12 bg-gradient-to-br from-gray-500 to-gray-700 rounded-xl flex items-center justify-center">
+          <i class="fas fa-terminal text-white text-2xl"></i>
+        </div>
+        <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black/80 text-white text-sm px-3 py-1 
+                         rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Terminal</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Time update
+    function updateTime() {
+      const now = new Date();
+      const options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      };
+      document.getElementById('menuTime').textContent = now.toLocaleString('en-US', options);
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // Window management
+    const folderWindow = document.getElementById('folderWindow');
+    const portfolioFolder = document.getElementById('portfolioFolder');
+    const closeButton = document.getElementById('closeWindow');
+    const minimizeButton = document.getElementById('minimizeWindow');
+    const maximizeButton = document.getElementById('maximizeWindow');
+    let isMaximized = false;
+
+    // Navigation management
+    const sections = ['about', 'projects', 'experience', 'contact'];
+    sections.forEach(section => {
+      const navButton = document.getElementById(`${section}Nav`);
+      const sectionElement = document.getElementById(`${section}Section`);
+
+      navButton.addEventListener('click', () => {
+        // Remove active class from all nav items and sections
+        document.querySelectorAll('.nav-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        document.querySelectorAll('.section').forEach(item => {
+          item.classList.remove('active');
+        });
+
+        // Add active class to clicked nav item and corresponding section
+        navButton.classList.add('active');
+        sectionElement.classList.add('active');
+      });
+    });
+
+    // Window dragging
+    const windowHeader = document.getElementById('windowHeader');
+    let isDragging = false;
+    let currentX;
+    let currentY;
+    let initialX;
+    let initialY;
+    let xOffset = 0;
+    let yOffset = 0;
+
+    portfolioFolder.addEventListener('click', () => {
+      folderWindow.classList.remove('hidden');
+      folderWindow.classList.add('visible');
+    });
+
+    closeButton.addEventListener('click', () => {
+      folderWindow.classList.remove('visible');
+      folderWindow.classList.add('hidden');
+    });
+
+    maximizeButton.addEventListener('click', () => {
+      isMaximized = !isMaximized;
+      if (isMaximized) {
+        folderWindow.style.width = '100%';
+        folderWindow.style.height = '100%';
+        folderWindow.style.top = '0';
+        folderWindow.style.left = '0';
+        folderWindow.style.transform = 'none';
+        windowHeader.style.cursor = 'default';
+      } else {
+        folderWindow.style.width = '';
+        folderWindow.style.height = '';
+        folderWindow.style.top = '50%';
+        folderWindow.style.left = '50%';
+        folderWindow.style.transform = 'translate(-50%, -50%)';
+        windowHeader.style.cursor = 'move';
+      }
+    });
+
+    windowHeader.addEventListener('mousedown', dragStart);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', dragEnd);
+
+    function dragStart(e) {
+      if (isMaximized) return;
+      initialX = e.clientX - xOffset;
+      initialY = e.clientY - yOffset;
+      if (e.target === windowHeader) {
+        isDragging = true;
+      }
+    }
+
+    function drag(e) {
+      if (isDragging) {
+        e.preventDefault();
+        currentX = e.clientX - initialX;
+        currentY = e.clientY - initialY;
+        xOffset = currentX;
+        yOffset = currentY;
+        folderWindow.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      }
+    }
+
+    function dragEnd() {
+      isDragging = false;
+    }
+  </script>
+</body>
+
+</html>
