@@ -22,7 +22,7 @@ export default function Objects() {
   const { progress } = useProgress();
   const [enterClicked, setEnterClicked] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-  const bgaudio = new Audio('./catbgaudio.mp3');
+  const bgaudio = new Audio('./humnava.mp3');
   const transitaudio = new Audio('./whoosh.mp3');
   const [loading, setLoading] = useState(true)
   const isMobile = window.innerWidth < 768;
