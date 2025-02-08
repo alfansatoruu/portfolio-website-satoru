@@ -105,7 +105,7 @@ export default function Objects() {
               </button>
               <button
                 type="button"
-                 title="Click to enable music and explore"
+                 title="Click Folder"
                 onClick={() => {
                   isMobile
                     ? cameraControlRef.current?.setPosition(2, 0, -9, true)
