@@ -72,3 +72,18 @@
     color: #4caf50;
   }
   
+
+  .container {
+    display: flex;
+    justify-content: center; /* Posisi horizontal */
+    align-items: center; /* Posisi vertikal */
+  }
+  
+  .image-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0077cc;
+  }
+  

@@ -1,4 +1,6 @@
-*, html, body {
+*,
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -50,6 +52,7 @@ body {
     .apple-logo {
       transform: scale(.6);
     }
+
     .menus {
       height: 100%;
       display: flex;
@@ -58,21 +61,25 @@ body {
       color: rgba(255, 255, 255, 0.95);
       font-size: 14px;
     }
+
     .active {
       font-weight: bold;
       color: #fff !important;
     }
   }
+
   .right {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 380px;
     margin-right: 2px;
+
     .vol {
       transform: scale(0.6);
       margin-right: 2px;
     }
+
     .menutime {
       height: 100%;
       width: auto;
@@ -81,11 +88,12 @@ body {
       justify-content: center;
       color: #fff;
     }
+
     .menu-ico {
       display: flex;
       align-items: center;
       justify-content: center;
-      color:#fff;
+      color: #fff;
 
       .control-center {
         -webkit-filter: invert(100%);
@@ -105,7 +113,7 @@ body {
   position: fixed;
   bottom: 0px;
   /*left: 280px;*/
-  margin-left:180px;
+  margin-left: 180px;
   background: rgba(83, 83, 83, 0.25);
   backdrop-filter: blur(13px);
   -webkit-backdrop-filter: blur(13px);
@@ -137,11 +145,13 @@ body {
   &:hover {
     margin: 0 13px;
   }
+
   .li-bin {
     margin-left: 20px;
     border-left: 1.5px solid rgba(255, 255, 255, 0.4);
     padding: 0px 10px;
   }
+
   .li-1 {
     &::after {
       position: absolute;
@@ -153,6 +163,8 @@ body {
       bottom: 2px;
     }
   }
+
+
 
   .name {
     position: absolute;
@@ -193,6 +205,7 @@ body {
     }
   }
 }
+
 .dock-container li-1:hover .name,
 .dock-container li-2:hover .name,
 .dock-container li-3:hover .name,
@@ -227,17 +240,18 @@ span {
   left: 90px;
   font-size: 24px;
   cursor: pointer;
-  height:100px;
+  height: 100px;
 }
-.folder-name{
-  position:absolute;
-  top:180px;
-  left:100px;
-  font-size:15px;
+
+.folder-name {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+  font-size: 15px;
   font-weight: bold;
-  cursor:pointer;
+  cursor: pointer;
   color: #fff;
-  font-family: 'San Francisco', Arial, sans-serif; 
+  font-family: 'San Francisco', Arial, sans-serif;
   text-shadow: rgb(127, 113, 227);
 }
 
@@ -302,6 +316,7 @@ span {
   line-height: 0px;
   cursor: pointer;
 }
+
 .buttons:hover a {
   visibility: visible;
 }
@@ -384,27 +399,31 @@ span {
   visibility: hidden;
   cursor: default;
 }
+
 .window-content {
   /* ... existing styles ... */
-   /* This will make .window-content take up the available space */
-   /* Add overflow property to handle content overflow */
+  /* This will make .window-content take up the available space */
+  /* Add overflow property to handle content overflow */
   overflow: auto;
   display: flex;
-  height:100%; /* Add this to use flexbox for the inner content */
+  height: 100%;
+  /* Add this to use flexbox for the inner content */
 }
+
 .sidebar-container {
-  display:flex;
+  display: flex;
   width: 160px;
-  height:71.5vh;
+  height: 71.5vh;
   background: #f0f0f0;
   padding: 10px;
   box-sizing: border-box;
-  position:fixed;
-  overflow:hidden;
+  position: fixed;
+  overflow: hidden;
 }
-.sidebar{
-  display:flex;
-  flex-direction:column;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 20px;
 }
@@ -415,10 +434,12 @@ span {
   cursor: pointer;
   border-bottom: 1px solid #ccc;
 }
-.section:hover{
-  text-decoration:underline;
+
+.section:hover {
+  text-decoration: underline;
   transition: ease-in-out 0.2s;
 }
+
 /* .content {
   flex: 1;
   display: flex;
@@ -432,33 +453,35 @@ span {
 } */
 
 .content {
-  flex:1;
-  margin-left:160px;
+  flex: 1;
+  margin-left: 160px;
   display: flex;
-  overflow:auto;
-  align-items: center; 
+  overflow: auto;
+  align-items: center;
   /* justify-content: center;  */
   text-align: center;
   flex-direction: column;
 }
 
-.content h3{
+.content h3 {
   padding-top: 30vh;
-  padding-bottom:1vh;
+  padding-bottom: 1vh;
   font-size: 27.5px;
 }
-.content p{
+
+.content p {
   font-weight: 400;
 }
 
-.content #header h3{
+.content #header h3 {
   padding-top: 10vh;
   font-size: 27.5px;
 }
-#about-me{
-  margin-top:20px;
+
+#about-me {
+  margin-top: 20px;
   margin-left: 10px;
-  margin-bottom:110px;
+  margin-bottom: 110px;
   text-align: center;
   padding-left: 10px;
   border: 0.1rem #000 solid;
@@ -466,7 +489,8 @@ span {
   border-radius: 10px;
   box-shadow: 0px 0px 10px #acacac;
 }
-#about-me:hover{
+
+#about-me:hover {
   box-shadow: 0px 0px 20px #acacac;
 }
 
@@ -475,12 +499,12 @@ span {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   gap: 0px 20px;
 }
 
 #skills-container i {
-  height: 105px;  
+  height: 105px;
 }
 
 #skills-container i:hover {
@@ -497,7 +521,8 @@ span {
   font-weight: bold;
 }
 
-#contact table input[type="text"], #contact table input[type="email"] {
+#contact table input[type="text"],
+#contact table input[type="email"] {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -507,7 +532,8 @@ span {
   font-size: 14px;
 }
 
-#contact table input[type="text"]:hover, #contact table input[type="email"]:hover {
+#contact table input[type="text"]:hover,
+#contact table input[type="email"]:hover {
   border: 1px solid rgb(37, 150, 190);
 }
 
@@ -596,7 +622,7 @@ span {
 .projects:hover {
   box-shadow: 0px 0px 20px rgb(37, 150, 190);
   transition: 0.2s;
-  background-color:rgb(179, 170, 243);
+  background-color: rgb(179, 170, 243);
   color: #fff;
 }
 
@@ -609,23 +635,23 @@ span {
 
 /* CSS */
 .resume-button {
-  margin-top:10px;
-  height:40px;
-  font-weight:bold;
+  margin-top: 10px;
+  height: 40px;
+  font-weight: bold;
   border: 2px solid white;
-  padding:10px 30px;
+  padding: 10px 30px;
   border-radius: 20px;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   background-color: #000;
-  color:white;
-  cursor:pointer;
+  color: white;
+  cursor: pointer;
   background-origin: padding-box;
 
 }
-.resume-button:hover{
-  background-color: white;
-  color:#000;
-  border:2px solid black;
-}
 
+.resume-button:hover {
+  background-color: white;
+  color: #000;
+  border: 2px solid black;
+}
