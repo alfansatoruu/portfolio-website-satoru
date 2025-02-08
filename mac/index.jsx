@@ -156,7 +156,6 @@ const PortfolioWindow = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-100">
-      {/* Folder Icon */}
       <div 
         className="absolute top-4 left-4 cursor-pointer"
         onClick={() => setIsVisible(true)}
@@ -179,7 +178,6 @@ const PortfolioWindow = () => {
             transition: 'transform 0.1s'
           }}
         >
-          {/* Title Bar */}
           <div 
             className="h-8 bg-gray-200 flex items-center justify-between px-2 select-none"
             onMouseDown={handleDragStart}

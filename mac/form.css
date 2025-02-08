@@ -1,0 +1,74 @@
+.modal-content {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgb(8, 66, 108));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    border-radius: 16px;
+  }
+  
+  form {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .form-input, 
+  .form-textarea {
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(71, 70, 70);
+    border-radius: 8px;
+    padding: 12px;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .form-input:focus, 
+  .form-textarea:focus {
+    border-color: #1cc4d7;
+  }
+  
+  textarea {
+    resize: none;
+    height: 120px;
+  }
+  
+  .submit-button {
+    background: #1f01ff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .submit-button:hover {
+    background: #e76e3b;
+  }
+  
+  .confirmation-message {
+    margin-top: 16px;
+    font-size: 1.2rem;
+    color: #4caf50;
+  }
+  
