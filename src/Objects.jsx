@@ -1,11 +1,17 @@
 import StylizedText from './StylizedText';
 import React, { useState, useRef, useEffect, Suspense } from "react"
 import './index.css'
+// import ContactButton from './ContactButton';
 import { Canvas } from "@react-three/fiber"
-import { Shadow, Html, CameraControls, useProgress, useGLTF } from "@react-three/drei"
+import {
+  Shadow,
+  Html,
+  CameraControls,
+  useProgress,
+  useGLTF
+} from "@react-three/drei"
 import Object from "./Object"
 import LoadingScreen from "./LoadingScreen"
-
 
 
 
@@ -13,18 +19,12 @@ export default function Objects() {
   useGLTF.preload('./scene.gltf')
   const cameraControlRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
-
-
   const [start, setStart] = useState(false);
   const { progress } = useProgress();
   const [enterClicked, setEnterClicked] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
   const bgaudio = new Audio('./catbgaudio.mp3');
   const transitaudio = new Audio('./whoosh.mp3');
-
-
-
-
   const [loading, setLoading] = useState(true)
   const isMobile = window.innerWidth < 768;
 
@@ -48,13 +48,6 @@ export default function Objects() {
 
   return (
     <>
-      {/* <Loader
-        containerStyles={{
-          
-          background:
-            "linear-gradient(rgba(252, 180, 217, 0.8), rgba(133, 193, 233))",
-        }}
-      ></Loader> */}
       {loading && <LoadingScreen />}
 
       <Canvas
@@ -70,37 +63,53 @@ export default function Objects() {
           height={1024}
         />
 
+        
         <Suspense fallback={null}>
           <Object />
-          <Html wrapperClass="header" >
-            <div style={{
-              position: 'absolute',
-              top: isMobile ? '-400px' : '-375px',
-              left: isMobile ? '-180px' : '-700px',
-            }}>
+
+          <Html wrapperClass="header">
+            <div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                textAlign: 'center',
+                width: isMobile ? '250px' : 'auto',
+              }}
+            >
               <StylizedText />
             </div>
-            <div className="buttons" style={{
-              position: 'absolute',
-              top: isMobile ? '-450px' : '-415px',
-              left: isMobile ? '-190px' : '-700px',
-            }}>
+
+            <div className="buttons"
+              style={{
+                position: 'absolute',
+                top: 'calc(50% + 100px)',
+                left: '50%',
+                transform: 'translate(-50%, 0)',
+                display: 'flex',
+                flexDirection: isMobile ? 'row' : 'row',
+                gap: '10px',
+                alignItems: 'center',
+              }}
+            >
               <button
                 type="button"
                 onClick={() => {
-                  isMobile ? cameraControlRef.current?.setPosition(-3, 30, 80, true) :
-                    cameraControlRef.current?.setPosition(7, 6, 13, true);
+                  isMobile
+                    ? cameraControlRef.current?.setPosition(-3, 30, 80, true)
+                    : cameraControlRef.current?.setPosition(7, 6, 13, true);
                   transitaudio.play();
                 }}
               >
                 Home
               </button>
               <button
-                title="Click to enable music and explore"
                 type="button"
                 onClick={() => {
-                  isMobile ? cameraControlRef.current?.setPosition(2, 0, -9, true) :
-                    cameraControlRef.current?.setPosition(1, -1.89, -4, true);
+                  isMobile
+                    ? cameraControlRef.current?.setPosition(2, 0, -9, true)
+                    : cameraControlRef.current?.setPosition(1, -1.89, -4, true);
                   transitaudio.play();
                   bgaudio.play();
                   bgaudio.loop = true;
@@ -109,35 +118,10 @@ export default function Objects() {
               >
                 Explore
               </button>
-              <style jsx>{`
-  
-      
-
-        
-
-
-        @media (max-width: 768px) {
-          .content-container {
-            padding: 10px;
-            transform: translate(-50%, -60%);
-          }
-
-          .buttons-wrapper {
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-          }
-
-          button {
-            width: 80%;
-            max-width: 200px;
-            padding: 12px 20px;
-          }
-        }
-      `}</style>
             </div>
           </Html>
         </Suspense>
+
       </Canvas>
 
     </>

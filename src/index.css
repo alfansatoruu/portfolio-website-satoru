@@ -21,8 +21,6 @@ body {
 }
 
 button {
-
-
     background: inherit;
     color: white;
     font-weight: bold;
@@ -32,7 +30,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, border 0.3s, color 0.3s;
     box-shadow: 0 4px 6px -3px #003366;
-    margin-top: 200px;
+   
 }
 
 button:hover {
@@ -43,8 +41,6 @@ button:hover {
 }
 
 .buttons {
-  margin-left:100vh;
-  margin-top:70vh;
     display: flex;
     flex-direction: row;
     gap: 5px;

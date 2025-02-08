@@ -7,6 +7,7 @@
   <title>Modern MacOS Interface</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="form.css">
   <style>
     .text-shadow {
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -119,7 +120,10 @@
             class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Full Stack Developer
           </h1>
-          <H3>Hi, I'M ALVAN</H3>
+          <h1
+          class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          HII,MY NAME ALVAN
+        </h1>
           <p class="text-gray-600 leading-relaxed">
             Passionate about creating elegant solutions to complex problems. Specialized in modern web technologies
             and application development.
@@ -128,9 +132,9 @@
             <h2 class="text-2xl font-semibold text-gray-800">Key Skills</h2>
             <div class="flex flex-wrap gap-4">
               <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">React</span>
-              <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Node.js</span>
-              <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">TypeScript</span>
-              <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">Flutter</span>
+              <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">GIT</span>
+              <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Firebase</span>
             </div>
           </div>
           <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full 
@@ -213,26 +217,52 @@
               </div>
             </div>
           </div>
-          <form class="space-y-4">
+          <!-- <form class="space-y-4" onsubmit="return handleSubmit(event)">
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-              <input type="text"
+              <input type="text" id="name" required
                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input type="email"
+              <input type="email" id="email" required
                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-              <textarea rows="4"
+              <textarea id="message" rows="4" required
                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
             </div>
-            <button class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+            <button type="submit"
+              class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
               Send Message
             </button>
-          </form>
+            <div id="confirmationMessage" class="mt-4 text-green-600"></div>
+          </form> -->
+          <div class="modal-content">
+            <form id="contactForm" onsubmit="return sendEmail(event)">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" required class="form-input" placeholder="Enter your name" />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" required class="form-input"
+                  placeholder="Enter your email" />
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" required class="form-textarea"
+                  placeholder="What would you like to say?"></textarea>
+              </div>
+
+              <button type="submit" class="submit-button">Send Message</button>
+            </form>
+            <div id="confirmationMessage" class="confirmation-message"></div>
+          </div>
+
         </div>
       </div>
 
@@ -279,6 +309,9 @@
       </div>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script src="fungsi_email.js"></script>
 
   <script>
     // Time update
