@@ -1,113 +1,96 @@
-.loading-screen{
-    background:linear-gradient(#a0adde,rgba(133, 193, 233));
-    width:100%;
-    height:100%;
-    backdrop-filter: blur(20px);
-    display:flex;
-    animation-duration: 0.8s;
-    /* opacity: 1;
-    transition: opacity 0.3s ease-out; Use transition for fade-in effect */
-
-}
-.loading-screen.fade-out {
-    opacity: 0;
-    animation: fadeOutAnimation 1s ease-out forwards; /* Use animation for fade-out effect */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(119, 185, 248, 0.559);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
   }
   
-  @keyframes fadeOutAnimation {
-    to {
-      opacity: 0;
-      transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-  } 
+  .loading-screen h3 {
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 4px rgba(17, 143, 160, 0.3);
+  }
   
-.loader-card {
-    text-align: center;
-    color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    display:inline-block;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    margin-top:200px;
-    margin-left: 530px;
-}
-.loader-card h3{
-    color:white;
-    font-weight: bold;
-}
-
-
-.loader-card img {
+  .loading-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .loading-progress img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-
-
-}
-.progressbar-container {
-    /* Content alignment */
-    display: inline-block;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap:10px;
-}
-.progressbar-container p{
-    color:white;
-    margin-top:10px;
-    font-size:15px;
-    font-weight: lighter;
-    text-shadow: none;
-}
-
-.progressbar {
-    /* Size */
-    width: 400px;
-    height: 10px;
-    border:2px white;
-
-    /* Content alignment */
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-self:center;
-
-    /* Style */
-    border-radius: 60px;
-    box-shadow: 0px 0px 20px #111;
-
-    overflow: hidden;
-}
-
-.bar {
-    /* Size */
-    width: 0%;
-
-    /* Style */
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-        180deg,
-        rgb(255, 255, 255) 0%,
-        rgb(215, 215, 215) 32%,
-        rgb(188, 194, 219) 100%
-    );
-}
-
-@media screen and (max-width:768px) {
+    object-fit: cover;
+    border: 4px solid white;
+    animation: spin 20s linear infinite;
+  }
   
-  .loader-card{
-    margin-left: 20px;
-    margin-top:280px;
-    margin-left:45px;
-    align-items:center;
-    justify-content:center;
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
-  .progressbar{
-    width:300px;
+  
+  .progress-bar {
+    width: 300px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
   }
-}
+  
+  .progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .progress-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
 
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .loading-screen h3 {
+      font-size: 2rem;
+    }
+    
+    .loading-progress img {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .progress-bar {
+      width: 250px;
+    }
+    
+    .progress-text {
+      font-size: 1.2rem;
+    }
+  }

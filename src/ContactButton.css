@@ -1,0 +1,193 @@
+.contact-button {
+  position: fixed;
+  bottom: 18vh;
+  right: 10vh;
+  font-size: 16px;
+  background: inherit;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
+  box-shadow: 0 4px 6px -3px #003366;
+}
+
+.contact-button:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: scale(1.05);
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+
+ 
+  width: 85vh;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90vw;
+  /* Lebih kecil agar sesuai mobile */
+  max-width: 350px;
+  /* Batas maksimum */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-button:hover {
+  color: #ff758c;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #ff758c;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 118, 136, 0.3);
+}
+
+.form-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.submit-button {
+  background: #ff758c;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-button:hover {
+  background: #ff5a76;
+}
+
+.confirmation-message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-button {
+    bottom: 15vh;
+    /* Lebih rendah untuk jempol */
+    right: 10vh;
+    font-size: 13px;
+    padding: 8px 14px;
+    z-index: -1;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    right: 100vh;
+    /* Menggeser ke kiri */
+    bottom: 30vh;
+    /* Menggeser ke atas */
+    width: 100vw;
+
+    z-index: 30000;
+  }
+
+
+  .modal-content {
+    width: 95%;
+    max-width: 350px;
+    padding: 12px;
+  }
+
+  .modal-title {
+    font-size: 18px;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 13px;
+  }
+
+  .submit-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

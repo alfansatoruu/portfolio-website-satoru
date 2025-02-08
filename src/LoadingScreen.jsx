@@ -1,45 +1,24 @@
-
-import { useProgress } from "@react-three/drei"
-import React, { useState, useEffect } from 'react';
-import './LoadingScreen.css';
-import { motion, animate, AnimatePresence } from 'framer-motion';
-
+import React from 'react';
+import { useProgress } from "@react-three/drei";
+import './LoadingScreen.css'
 
 const LoadingScreen = () => {
   const { progress } = useProgress();
-  const [fade, setFade] = useState(false);
-  useEffect(() => {
-
-    const fadeOutTimeout = setTimeout(() => {
-      setFade(true);
-    }, 2000);
-
-    return () => clearTimeout(fadeOutTimeout);
-  }, []);
-
+  
   return (
-    <div className="loading-screen" style={{ opacity: fade ? 0 : 1, transition: "opacity 2s ease-in-out" }}
-    >
-      <div className="loader-card">
-        <img src="./loadingpic.jpeg" alt="alvan" />
+    <div className="loading-screen">
+      <div className="loading-progress">
+        <img src="./spinner.png" alt="alvan" />
+        <div className="progress-container">
         <h3>Satoru</h3>
-        <div className="progressbar-container">
-          <div className="progressbar">
-            <motion.div
-              className="bar"
-              animate={{
-                width: `${progress}%`
-              }}
-              transition={{
-                duration: 1.8,
-                delay: 0.1
-              }}
-            />
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
           </div>
-          <p>Please wait while we're setting up....</p>
+          <div className="progress-text">{progress.toFixed(0)}%</div>
         </div>
       </div>
     </div>
   );
 };
+
 export default LoadingScreen;

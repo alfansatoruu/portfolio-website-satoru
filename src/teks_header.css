@@ -6,74 +6,104 @@
     text-align: center;
     min-height: 95vh;
     padding: 20px;
-  }
+}
 
-  .text-wrapper {
+.text-wrapper {
     padding: 20px;
-  }
+}
 
-  .main-title {
+.main-teks {
 
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    color: #ffffff;
+    letter-spacing: 4px;
+  
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+}
+
+.main-title {
     font-size: 2rem;
     font-weight: 300;
     color: #ffffff;
-    text-shadow: 
-      3px 3px 0px #4E63D9,
-      6px 6px 0px rgba(255, 255, 255, 0.2);
+    text-shadow:
+        3px 3px 0px #4E63D9,
+        6px 6px 0px rgba(255, 255, 255, 0.2);
     letter-spacing: 4px;
-    margin-bottom:25vh;
-   
-    animation: titleFloat 3s ease-in-out infinite;
-  }
+    margin-bottom: 18vh;
 
-  .description {
-  margin-bottom:40px;
+    animation: titleFloat 3s ease-in-out infinite;
+}
+
+.description {
+    margin-bottom: 40px;
     position: relative;
     padding: 10px;
     margin-top: 10px;
-  }
+}
 
-  .role-text {
+.role-text {
     font-size: 1.2rem;
     color: #ffffff;
     line-height: 1.5;
     animation: fadeInUp 0.8s ease-out forwards;
-  }
+}
 
-  .bullet {
-  margin-bottom:20px;
+.bullet {
+    margin-left: 42vh;
+    margin-bottom: 1vh;
     color: #4E63D9;
     font-size: 1.4rem;
     margin-right: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+    font-style: italic; /* Adds slant/italics */
+    font-weight: bold;
+    transform: skewX(-15deg); /* Adds slight rightward slant */
+    display: inline-block;
+}
 
-  @keyframes titleFloat {
-    0%, 100% {
-      transform: translateY(0);
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .bullet {
+        margin-left: 20vh;
+        font-size: 1.2rem;
     }
+}
+
+@keyframes titleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
     50% {
-      transform: translateY(-10px);
+        transform: translateY(-10px);
     }
-  }
+}
 
-  @keyframes fadeInUp {
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  @media (max-width: 768px) {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
     .main-title {
-      font-size: 1.8rem;
-      letter-spacing: 3px;
+        font-size: 1.8rem;
+        letter-spacing: 3px;
     }
+
     .role-text {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  }
+}

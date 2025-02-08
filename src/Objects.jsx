@@ -1,7 +1,6 @@
 import StylizedText from './StylizedText';
 import React, { useState, useRef, useEffect, Suspense } from "react"
 import './index.css'
-// import ContactButton from './ContactButton';
 import { Canvas } from "@react-three/fiber"
 import {
   Shadow,
