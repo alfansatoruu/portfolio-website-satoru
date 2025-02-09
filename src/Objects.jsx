@@ -224,28 +224,28 @@ export default function Objects() {
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     setEmailStatus({ message: '', type: '' });
-  
+
     try {
       await emailjs.sendForm(
         "service_2gfv57d",
         "template_n44fqg7",
         formRef.current
       );
-  
+
       setEmailStatus({
         message: `Message sent successfully! Name: ${name}, Email: ${email}`,
         type: 'success'
       });
-  
+
       formRef.current.reset();
       setName('');
       setEmail('');
-  
+
       setTimeout(() => {
         setEmailStatus({ message: '', type: '' });
         handleCloseForm();
       }, 3000);
-  
+
     } catch (error) {
       console.error("Error:", error);
       setEmailStatus({
@@ -254,7 +254,7 @@ export default function Objects() {
       });
     }
   };
-  
+
 
   return (
     <>
@@ -306,7 +306,7 @@ export default function Objects() {
                 {!showContactForm ? (
                   <div className="form-preview">
                     <h3 className="text-lg font-bold mb-2">Contact Satoru</h3>
-                    <p className="text-sm"  style={{textAlign:'center'}}>Click to open form</p>
+                    <p className="text-sm" style={{ textAlign: 'center' }}>Click to open form</p>
                   </div>
                 ) : (
                   <form
@@ -338,7 +338,7 @@ export default function Objects() {
                           width: '90%',
                           margin: '0 auto',
                           display: 'block',
-                             border:'none'
+                          border: 'none'
                         }}
                         required
                       />
@@ -354,7 +354,7 @@ export default function Objects() {
                           width: '90%',
                           margin: '0 auto',
                           display: 'block',
-                             border:'none'
+                          border: 'none'
                         }}
                         required
                       />
@@ -370,7 +370,7 @@ export default function Objects() {
                           margin: '0 auto',
                           display: 'block',
                           minHeight: '100px',
-                          border:'none'
+                          border: 'none'
                         }}
                         rows="4"
                         required
@@ -379,14 +379,7 @@ export default function Objects() {
 
 
                     <div style={{ display: 'flex', gap: '60px', justifyContent: 'center', marginTop: '15px' }}>
-                      <button
-                        type="submit"
-                        className="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
-                        disabled={emailStatus.type === 'success'}
-                        style={{ minWidth: '100px' }}
-                      >
-                        Send
-                      </button>
+
                       <button
                         type="button"
                         onClick={handleCloseForm}
@@ -395,6 +388,15 @@ export default function Objects() {
                       >
                         Close
                       </button>
+                      <button
+                        type="submit"
+                        className="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
+                        disabled={emailStatus.type === 'success'}
+                        style={{ minWidth: '100px' }}
+                      >
+                        Send
+                      </button>
+
                     </div>
 
 
