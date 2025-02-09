@@ -443,7 +443,7 @@ export default function Objects() {
               </button>
               <button
                 type="button"
-                title="Rotate 260°"
+                title="isi formulir"
                 onClick={handleRotate260}
                 className="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition-colors"
               >
