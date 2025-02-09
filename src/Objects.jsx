@@ -10,9 +10,8 @@ import {
 import emailjs from '@emailjs/browser';
 import StylizedText from './StylizedText';
 import Object from "./Object";
-import LoadingScreen from "./LoadingScreen";
 import './index.css';
-import './loading_load.css';
+
 
 emailjs.init("UCKKih5IQspVduNdt");
 
@@ -33,36 +32,98 @@ const LoadingIndicator = () => {
 
   return (
     <Html center>
-      <div className="loading-container">
-        <div className="loading-progress">
-          <div
-            style={{
-              background: '#e0e0e0',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              width: '100%',
-              height: '12px',
-              boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            <div
-              className="progress-bar"
-              style={{
-                width: `${progress}%`,
-                height: '100%',
-                background: `linear-gradient(90deg, #4caf50, #81c784)`,
-                transition: 'width 0.3s ease',
-                boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15)'
-              }}
-            />
-          </div>
+      <div className="loading-container" 
+        style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          textAlign: 'center',
+          padding: '20px',
+          borderRadius: '10px',
 
+          zIndex: 1000,
+          fontFamily: "'Arial', sans-serif",
+        }}
+      >
+        {/* Coffee Cup */}
+        <div style={{
+          position: 'relative',
+          width: '80px',
+          height: '100px',
+          margin: '0 auto 20px',
+        }}>
+          {/* Coffee Liquid */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            height: `${progress}%`,
+            width: '100%',
+            background: 'linear-gradient(to right,rgb(255, 255, 255), #6f4e37)',
+            borderRadius: '0 0 10px 10px',
+            transition: 'height 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+            boxShadow: 'inset 0 -3px 5px rgba(0,0,0,0.2)',
+          }}/>
+          
+          {/* Cup Shape */}
+          <div style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            border: '4px solid #6f4e37',
+            borderRadius: '0 0 15px 15px',
+            boxShadow: '0 3px 6px rgba(0,0,0,0.15)',
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          }}/>
+
+          {/* Steam Animation */}
+          <div style={{
+            position: 'absolute',
+            top: '-30px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            gap: '8px',
+          }}>
+            {[1, 2, 3].map((i) => (
+              <div key={i} style={{
+                width: '8px',
+                height: '20px',
+                background: 'rgba(255,255,255,0.8)',
+                borderRadius: '4px',
+                animation: `steam 2s infinite ${i * 0.3}s`,
+                opacity: 0,
+              }}/>
+            ))}
+          </div>
         </div>
-        <div className="loading-text">
-          Loading Assets: {Math.floor(progress)}%
-          <br />
-          {loaded}/{total}
+
+        {/* Loading Text */}
+        <div style={{ 
+          fontSize: '14px',
+          color: '#4b3832',
+          fontWeight: 500,
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+        }}>
+          <div style={{ marginBottom: '4px' }}>
+            Memuat..
+          </div>
+          <div style={{ fontSize: '12px', opacity: 0.8 }}>
+          ☕{Math.floor(progress)}% ({loaded}/{total})
+          </div>
         </div>
+
+        {/* Steam Animation Keyframes */}
+        <style>
+          {`
+            @keyframes steam {
+              0% { transform: translateY(0) scale(1); opacity: 0; }
+              50% { transform: translateY(-15px) scale(1.2); opacity: 0.6; }
+              100% { transform: translateY(-30px) scale(0.8); opacity: 0; }
+            }
+          `}
+        </style>
       </div>
     </Html>
   );
@@ -316,8 +377,6 @@ export default function Objects() {
 
   return (
     <>
-      {isLoading && <LoadingScreen />}
-
       <Canvas
         shadows
         camera={{
