@@ -32,7 +32,7 @@ const LoadingIndicator = () => {
 
   return (
     <Html center>
-      <div className="loading-container" 
+      <div className="loading-container"
         style={{
           position: 'fixed',
           top: '50%',
@@ -63,8 +63,8 @@ const LoadingIndicator = () => {
             borderRadius: '0 0 10px 10px',
             transition: 'height 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
             boxShadow: 'inset 0 -3px 5px rgba(0,0,0,0.2)',
-          }}/>
-          
+          }} />
+
           {/* Cup Shape */}
           <div style={{
             position: 'absolute',
@@ -74,7 +74,7 @@ const LoadingIndicator = () => {
             borderRadius: '0 0 15px 15px',
             boxShadow: '0 3px 6px rgba(0,0,0,0.15)',
             backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          }}/>
+          }} />
 
           {/* Steam Animation */}
           <div style={{
@@ -93,13 +93,13 @@ const LoadingIndicator = () => {
                 borderRadius: '4px',
                 animation: `steam 2s infinite ${i * 0.3}s`,
                 opacity: 0,
-              }}/>
+              }} />
             ))}
           </div>
         </div>
 
         {/* Loading Text */}
-        <div style={{ 
+        <div style={{
           fontSize: '14px',
           color: '#4b3832',
           fontWeight: 500,
@@ -110,7 +110,7 @@ const LoadingIndicator = () => {
             Memuat..
           </div>
           <div style={{ fontSize: '12px', opacity: 0.8 }}>
-          ☕{Math.floor(progress)}% ({loaded}/{total})
+            ☕{Math.floor(progress)}% ({loaded}/{total})
           </div>
         </div>
 
@@ -400,9 +400,6 @@ export default function Objects() {
         <Suspense fallback={<LoadingIndicator />}>
           <ModelPreloader onLoadComplete={handleModelLoad} />
           {modelLoaded && <Object />}
-
-          {/* Contact Form */}
-          {/* Contact Form */}
           {isFormVisible && (
             <Html position={[-5, 2, 0]} style={{
               bottom: isMobile ? '-10vh' : '-14vh',
@@ -412,18 +409,6 @@ export default function Objects() {
             }}>
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
-                // style={{
-                //   backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                //   padding: isMobile ? '4%' : '5%',
-                //   borderRadius: '10px',
-                //   width: isMobile ? '85%' : '400px',
-                //   maxWidth: '500px',
-                //   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                //   cursor: 'pointer',
-                //   transform: `translateX(${isMobile ? '0' : '-50px'}) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
-                //   transition: 'all 0.3s ease-in-out',
-                //   margin: isMobile ? '0 auto' : 'initial'
-                // }}
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   padding: '10px',
@@ -438,8 +423,34 @@ export default function Objects() {
               >
                 {!showContactForm ? (
                   <div className="form-preview">
-                    <h3 className="text-lg font-bold mb-2">Contact Satoru</h3>
-                    <p className="text-sm text-center">Click to open form</p>
+                    <div
+                      className="flex justify-between items-center gap-4 p-4 border-b"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        gap: '16px',
+                        padding: '16px',
+                     
+                      }}
+                    >
+                      <h5 className="text-lg font-bold mb-2">Contact Satoru</h5>
+                      <img
+                        src="gojo.png"
+                        alt="Satoru Gojo"
+                        className="rounded-full border-2 border-blue-500"
+                        style={{
+                          width: '30px',
+                          height: '30px',
+                          minWidth: '30px',
+                          objectFit: 'cover',
+                        }}
+                      />
+                    </div>
+
+
+                    <p style={{ fontSize: '14px', textAlign: 'center' }}>Click to open form</p>
+
                   </div>
                 ) : (
                   <form
