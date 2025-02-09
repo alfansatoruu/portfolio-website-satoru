@@ -239,20 +239,22 @@ export default function Objects() {
         bgaudioRef.current.currentTime = 0;
         setIsPlaying(false);
       }
-
+  
       setShowContactForm(false);
       setIsExpanded(false);
-
+  
       const initialPosition = isMobile ? [-3, 30, 80] : [7, 6, 13];
-      await cameraControlRef.current.setPosition(...initialPosition, true);
+      // Tambahkan transition duration pada setPosition
+      await cameraControlRef.current.setPosition(...initialPosition, true, 800);
       transitaudio.play();
-
+  
       setTimeout(() => {
         const radiansRotation = (260 * Math.PI) / 180;
-        cameraControlRef.current.rotate(radiansRotation, 0, true);
+        // Tambahkan transition duration pada rotate
+        cameraControlRef.current.rotate(radiansRotation, 0, true, 1000);
         transitaudio.play();
         setIsRotated(true);
-      }, 1000);
+      }, 1200);
     }
   };
 
