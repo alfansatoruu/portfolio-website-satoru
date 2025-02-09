@@ -78,7 +78,7 @@ export default function Objects() {
   useEffect(() => {
     const audio = bgaudioRef.current;
     audio.loop = true;
-    audio.volume = 0.1;
+    audio.volume = 1.0;
 
     const loadAssets = async () => {
       try {
@@ -219,29 +219,33 @@ export default function Objects() {
       setIsRotated(false); // Reset rotasi kamera juga
     }, 300); // Sesuaikan dengan durasi animasi (300ms)
   };
+
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     setEmailStatus({ message: '', type: '' });
-
+  
     try {
       await emailjs.sendForm(
         "service_2gfv57d",
         "template_n44fqg7",
         formRef.current
       );
-
+  
       setEmailStatus({
-        message: 'Message sent successfully!',
+        message: `Message sent successfully! Name: ${name}, Email: ${email}`,
         type: 'success'
       });
-
+  
       formRef.current.reset();
-
+      setName('');
+      setEmail('');
+  
       setTimeout(() => {
         setEmailStatus({ message: '', type: '' });
         handleCloseForm();
       }, 3000);
-
+  
     } catch (error) {
       console.error("Error:", error);
       setEmailStatus({
@@ -250,6 +254,7 @@ export default function Objects() {
       });
     }
   };
+  
 
   return (
     <>
