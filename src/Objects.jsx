@@ -36,14 +36,32 @@ const LoadingIndicator = () => {
       <div className="loading-container">
         <div className="loading-progress">
           <div
-            className="progress-bar"
-            style={{ width: `${progress}%` }}
-          />
+            style={{
+              background: '#e0e0e0',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              width: '100%',
+              height: '12px',
+              boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <div
+              className="progress-bar"
+              style={{
+                width: `${progress}%`,
+                height: '100%',
+                background: `linear-gradient(90deg, #4caf50, #81c784)`,
+                transition: 'width 0.3s ease',
+                boxShadow: '0 3px 6px rgba(0, 0, 0, 0.15)'
+              }}
+            />
+          </div>
+
         </div>
         <div className="loading-text">
           Loading Assets: {Math.floor(progress)}%
           <br />
-          {loaded}/{total} items loaded
+          {loaded}/{total}
         </div>
       </div>
     </Html>
