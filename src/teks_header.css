@@ -1,10 +1,9 @@
-/* StylizedText.css */
 .text-container {
-    position: relative; /* Referensi untuk absolute positioning */
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .text-wrapper {
@@ -14,7 +13,7 @@
 
 .main-title {
     bottom: 20vh;
-    position: relative; /* Tetap di posisi default */
+    position: relative;
     font-size: 2rem;
 
     padding: 0;
@@ -39,11 +38,11 @@
 
     position: absolute;
     top: 21vh;
-    left: 15vh; /* Pindah ke kanan 20vh */
+    left: 15vh;
 }
 
 .role-text {
-   
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,20 +80,20 @@
     transform-origin: left;
 }
 
-/* Main text animation */
+
 .main-teks {
     position: absolute;
-    top: 50vh; /* Pindah ke bawah 20vh */
+    top: 50vh;
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-
+ 
 }
 
 .main-teks span {
     display: inline-block;
     color: #333;
-    font-size: 3rem;
+    font-size: 1rem;
     font-weight: bold;
     opacity: 0;
     transform: translateY(100%);
@@ -108,12 +107,13 @@
     transform: translateY(-5px);
 }
 
-/* Animations */
+
 @keyframes slideIn {
     0% {
         opacity: 0;
         transform: translateY(100%);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -121,24 +121,32 @@
 }
 
 @keyframes waveAnimation {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(-10deg);
     }
+
     75% {
         transform: rotate(10deg);
     }
 }
 
 @keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(-10deg);
     }
+
     75% {
         transform: rotate(10deg);
     }
@@ -149,6 +157,7 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -156,15 +165,18 @@
 }
 
 @keyframes pulseColor {
-    0%, 100% {
+
+    0%,
+    100% {
         color: #4a90e2;
     }
+
     50% {
         color: #2196f3;
     }
 }
 
-/* Mobile Responsiveness */
+
 @media (max-width: 768px) {
     .text-container {
         flex-direction: column;
@@ -174,8 +186,7 @@
 
     .main-title {
         bottom: 12vh;
-        position: relative; /* Tetap di posisi default */
-    
+        position: relative;
         padding: 0;
         display: flex;
         align-items: center;
@@ -194,7 +205,7 @@
     .main-teks {
         position: relative;
         top: 15vh;
-        
+
     }
 
     .main-title {

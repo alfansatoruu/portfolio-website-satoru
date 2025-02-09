@@ -350,9 +350,10 @@ export default function Objects() {
       );
 
       setEmailStatus({
-        message: `Message sent successfully! Name: ${formData.user_name}, Email: ${formData.user_email}`,
+        message: <span style={{ color: 'green' }}>Message sent successfully!</span>,
         type: 'success'
       });
+      
 
       setFormData({
         user_name: '',
@@ -368,7 +369,7 @@ export default function Objects() {
     } catch (error) {
       console.error("Error:", error);
       setEmailStatus({
-        message: 'Error sending message. Please try again.',
+        message: <span style={{ color: 'red' }}>Error sending message. Please try again.</span>,
         type: 'error'
       });
     }
