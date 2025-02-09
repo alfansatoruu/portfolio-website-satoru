@@ -1,0 +1,36 @@
+/* Container utama */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #1279a2;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+  }
+  
+  
+  /* Loading text */
+  .loading-text {
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #e0f2fe;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .loading-container {
+      padding: 20px;
+    }
+  
+    .loading-progress {
+      width: 100%;
+    }
+  
+    .loading-text {
+      font-size: 1rem;
+    }
+  }

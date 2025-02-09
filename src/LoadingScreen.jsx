@@ -14,7 +14,6 @@ const LoadingScreen = () => {
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${progress}%` }} />
           </div>
-          <div className="progress-text">{progress.toFixed(0)}%</div>
         </div>
       </div>
     </div>
