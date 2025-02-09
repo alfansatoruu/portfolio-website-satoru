@@ -281,7 +281,7 @@ export default function Objects() {
 
           {/* Contact Form */}
           {isFormVisible && (
-            <Html position={[-5, 2, 0]} style={{ bottom: '-17vh', left: '-2vh' }}>
+            <Html position={[-5, 2, 0]} style={{ bottom: '-17vh', left: '-1.5vh' }}>
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
                   }`}
