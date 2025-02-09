@@ -69,6 +69,11 @@ export default function Objects() {
     message: '',
     type: ''
   });
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    message: ''
+  });
   const bgaudioRef = useRef(new Audio('./humnava.mp3'));
   const transitaudio = new Audio('./whoosh.mp3');
   const isMobile = window.innerWidth < 768;
@@ -105,6 +110,14 @@ export default function Objects() {
       audio.currentTime = 0;
     };
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   useEffect(() => {
     if (modelLoaded && assetsReady) {
@@ -205,41 +218,60 @@ export default function Objects() {
       setShowContactForm(true);
     }
   };
+
   const handleCloseForm = () => {
-    // Pertama, tutup form dengan animasi
     setIsExpanded(false);
     setShowContactForm(false);
-
-    // Reset status email
     setEmailStatus({ type: '', message: '' });
 
-    // Tunggu animasi selesai, baru sembunyikan form container
     setTimeout(() => {
       setIsFormVisible(false);
-      setIsRotated(false); // Reset rotasi kamera juga
-    }, 300); // Sesuaikan dengan durasi animasi (300ms)
+      setIsRotated(false);
+      setFormData({
+        user_name: '',
+        user_email: '',
+        message: ''
+      });
+    }, 300);
   };
-
-
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     setEmailStatus({ message: '', type: '' });
 
     try {
-      await emailjs.sendForm(
-        "service_2gfv57d",
-        "template_n44fqg7",
-        formRef.current
+      // Format tanggal saat ini
+      const today = new Date();
+      const formattedDate = today.toLocaleDateString('id-ID', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+
+      // Create template parameters with all form data, including the date
+      const templateParams = {
+        name: formData.user_name,      // Matches {{name}}
+        email: formData.user_email,    // Matches {{email}}
+        message: formData.message,     // Matches {{message}}
+        date: formattedDate,           // Matches {{date}} in the template
+        reply_to: formData.user_email  // Optional if Reply To is set
+      };
+
+      await emailjs.send(
+        "service_2gfv57d",     // Your EmailJS service ID
+        "template_n44fqg7",    // Your EmailJS template ID
+        templateParams,
+        "UCKKih5IQspVduNdt"    // Your EmailJS public key
       );
 
       setEmailStatus({
-        message: `Message sent successfully! Name: ${name}, Email: ${email}`,
+        message: `Message sent successfully! Name: ${formData.user_name}, Email: ${formData.user_email}`,
         type: 'success'
       });
 
-      formRef.current.reset();
-      setName('');
-      setEmail('');
+      // Reset form
+      setFormData({
+        user_name: '',
+        user_email: '',
+        message: ''
+      });
 
       setTimeout(() => {
         setEmailStatus({ message: '', type: '' });
@@ -254,7 +286,6 @@ export default function Objects() {
       });
     }
   };
-
 
   return (
     <>
@@ -288,8 +319,7 @@ export default function Objects() {
           {isFormVisible && (
             <Html position={[-5, 2, 0]} style={{ bottom: '-17vh', left: '-1.5vh' }}>
               <div
-                className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
-                  }`}
+                className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   padding: '20px',
@@ -297,8 +327,7 @@ export default function Objects() {
                   width: '300px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   cursor: 'pointer',
-                  transform: `translateX(-50px) ${isExpanded ? 'scale(1)' : 'scale(0.95)'
-                    }`,
+                  transform: `translateX(-50px) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
                   transition: 'all 0.3s ease-in-out'
                 }}
                 onClick={handleFormExpand}
@@ -310,8 +339,6 @@ export default function Objects() {
                   </div>
                 ) : (
                   <form
-                    ref={formRef}
-                    id="contactForm"
                     onSubmit={handleSubmitForm}
                     className="space-y-4"
                   >
@@ -333,6 +360,8 @@ export default function Objects() {
                       <input
                         type="text"
                         name="user_name"
+                        value={formData.user_name}
+                        onChange={handleInputChange}
                         className="w-full px-3 py-2 border rounded-md"
                         style={{
                           width: '90%',
@@ -349,6 +378,8 @@ export default function Objects() {
                       <input
                         type="email"
                         name="user_email"
+                        value={formData.user_email}
+                        onChange={handleInputChange}
                         className="w-full px-3 py-2 border rounded-md"
                         style={{
                           width: '90%',
@@ -364,6 +395,8 @@ export default function Objects() {
                       <label className="block text-sm font-medium mb-1" style={{ textAlign: 'start' }}>Message</label>
                       <textarea
                         name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         className="w-full px-3 py-2 border rounded-md"
                         style={{
                           width: '90%',
@@ -377,9 +410,7 @@ export default function Objects() {
                       ></textarea>
                     </div>
 
-
                     <div style={{ display: 'flex', gap: '60px', justifyContent: 'center', marginTop: '15px' }}>
-
                       <button
                         type="button"
                         onClick={handleCloseForm}
@@ -396,10 +427,7 @@ export default function Objects() {
                       >
                         Send
                       </button>
-
                     </div>
-
-
                   </form>
                 )}
               </div>
