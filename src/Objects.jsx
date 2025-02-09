@@ -234,31 +234,40 @@ export default function Objects() {
       });
     }, 300);
   };
+  const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
     setEmailStatus({ message: '', type: '' });
 
+    // Validasi format email
+    if (!isValidEmail(formData.user_email)) {
+      setEmailStatus({ message: 'Invalid email format. Please enter a valid email.', type: 'error' });
+      return;
+    }
+
     try {
-      // Format tanggal saat ini
       const today = new Date();
       const formattedDate = today.toLocaleDateString('id-ID', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
       });
 
-      // Create template parameters with all form data, including the date
       const templateParams = {
-        name: formData.user_name,      // Matches {{name}}
-        email: formData.user_email,    // Matches {{email}}
-        message: formData.message,     // Matches {{message}}
-        date: formattedDate,           // Matches {{date}} in the template
-        reply_to: formData.user_email  // Optional if Reply To is set
+        name: formData.user_name,
+        email: formData.user_email,
+        message: formData.message,
+        date: formattedDate,
+        reply_to: formData.user_email
       };
 
       await emailjs.send(
-        "service_2gfv57d",     // Your EmailJS service ID
-        "template_n44fqg7",    // Your EmailJS template ID
+        "service_2gfv57d",
+        "template_n44fqg7",
         templateParams,
-        "UCKKih5IQspVduNdt"    // Your EmailJS public key
+        "UCKKih5IQspVduNdt"
       );
 
       setEmailStatus({
@@ -266,7 +275,6 @@ export default function Objects() {
         type: 'success'
       });
 
-      // Reset form
       setFormData({
         user_name: '',
         user_email: '',
@@ -286,6 +294,7 @@ export default function Objects() {
       });
     }
   };
+
 
   return (
     <>
