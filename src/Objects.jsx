@@ -325,13 +325,31 @@ export default function Objects() {
           {modelLoaded && <Object />}
 
           {/* Contact Form */}
+          {/* Contact Form */}
           {isFormVisible && (
-            <Html position={[-5, 2, 0]} style={{ bottom: '-17vh', left: '-1.5vh' }}>
+            <Html position={[-5, 2, 0]} style={{
+              bottom: isMobile ? '-10vh' : '-14vh',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%'
+            }}>
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
+                // style={{
+                //   backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                //   padding: isMobile ? '4%' : '5%',
+                //   borderRadius: '10px',
+                //   width: isMobile ? '85%' : '400px',
+                //   maxWidth: '500px',
+                //   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                //   cursor: 'pointer',
+                //   transform: `translateX(${isMobile ? '0' : '-50px'}) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
+                //   transition: 'all 0.3s ease-in-out',
+                //   margin: isMobile ? '0 auto' : 'initial'
+                // }}
                 style={{
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  padding: '20px',
+                  padding: '10px',
                   borderRadius: '10px',
                   width: '300px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -344,7 +362,7 @@ export default function Objects() {
                 {!showContactForm ? (
                   <div className="form-preview">
                     <h3 className="text-lg font-bold mb-2">Contact Satoru</h3>
-                    <p className="text-sm" style={{ textAlign: 'center' }}>Click to open form</p>
+                    <p className="text-sm text-center">Click to open form</p>
                   </div>
                 ) : (
                   <form
@@ -364,79 +382,93 @@ export default function Objects() {
                       </div>
                     )}
 
-                    <div style={{ textAlign: 'start', marginBottom: '15px' }}>
-                      <label className="block text-sm font-medium mb-1" style={{ textAlign: 'start' }}>Name</label>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-1">Name</label>
                       <input
                         type="text"
                         name="user_name"
                         value={formData.user_name}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 rounded-md"
                         style={{
-                          width: '90%',
-                          margin: '0 auto',
-                          display: 'block',
-                          border: 'none'
+                          width: '100%',
+                          border: '1px solid #e2e8f0'
                         }}
                         required
                       />
                     </div>
 
-                    <div style={{ textAlign: 'start', marginBottom: '15px' }}>
-                      <label className="block text-sm font-medium mb-1" style={{ textAlign: 'start' }}>Email</label>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-1">Email</label>
                       <input
                         type="email"
                         name="user_email"
                         value={formData.user_email}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 rounded-md"
                         style={{
-                          width: '90%',
-                          margin: '0 auto',
-                          display: 'block',
-                          border: 'none'
+                          width: '100%',
+                          border: '1px solid #e2e8f0'
                         }}
                         required
                       />
                     </div>
 
-                    <div style={{ textAlign: 'start', marginBottom: '15px' }}>
-                      <label className="block text-sm font-medium mb-1" style={{ textAlign: 'start' }}>Message</label>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-1">Message</label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded-md"
+                        className="w-full px-3 py-2 rounded-md"
                         style={{
-                          width: '90%',
-                          margin: '0 auto',
-                          display: 'block',
-                          minHeight: '100px',
-                          border: 'none'
+                          width: '100%',
+                          minHeight: isMobile ? '80px' : '100px',
+                          border: '1px solid #e2e8f0'
                         }}
-                        rows="4"
+                        rows={isMobile ? "3" : "4"}
                         required
                       ></textarea>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '60px', justifyContent: 'center', marginTop: '15px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
+                        gap: '16px',
+                        marginTop: '24px'
+                      }}
+                    >
                       <button
                         type="button"
                         onClick={handleCloseForm}
-                        className="px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors"
-                        style={{ minWidth: '100px' }}
+                        className="px-6 py-2 bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors"
+                        style={{
+                          minWidth: isMobile ? '80px' : '100px',
+                          border: 'none',
+                          boxShadow: 'none',
+                          color: 'red'
+                        }}
                       >
                         Close
                       </button>
                       <button
                         type="submit"
-                        className="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
+                        className="px-6 py-2 bg-green-500 rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
                         disabled={emailStatus.type === 'success'}
-                        style={{ minWidth: '100px' }}
+                        style={{
+                          minWidth: isMobile ? '80px' : '100px',
+                          border: 'none',
+                          boxShadow: 'none',
+                          color: 'green'
+                        }}
                       >
                         Send
                       </button>
                     </div>
+
+
                   </form>
                 )}
               </div>
