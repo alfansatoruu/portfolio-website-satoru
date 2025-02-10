@@ -407,7 +407,7 @@ export default function Objects() {
             <Html position={[-5, 2, 0]} style={{
               position: 'fixed',
               bottom: isMobile ? '-7vh' : '-7vh',
-              left: isMobile ? '-9vh' : '-14vh',
+              left: isMobile ? '-5vh' : '-5vh',
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
@@ -416,6 +416,7 @@ export default function Objects() {
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
                 style={{
+                  left: isMobile ? '0.5vh' : '0.5vh',
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   padding: '10px',
                   borderRadius: '10px',
