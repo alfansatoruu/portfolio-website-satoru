@@ -407,6 +407,7 @@ export default function Objects() {
             <Html position={[-5, 2, 0]} style={{
               position: 'fixed',  // Bisa diganti dengan absolute sesuai kebutuhan
               bottom: isMobile ? '-7vh' : '-7vh',
+              transform: isMobile ? 'translate(-50%, 50%)' : 'translateX(-50%)',
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
