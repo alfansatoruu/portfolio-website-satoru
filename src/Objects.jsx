@@ -407,7 +407,7 @@ export default function Objects() {
             <Html position={[-5, 2, 0]} style={{
               position: 'fixed',
               bottom: isMobile ? '-7vh' : '-7vh',
-              left: isMobile ? '-5vh' : '-5vh',
+              left: isMobile ? '-12px' : '-12px',
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
@@ -416,29 +416,17 @@ export default function Objects() {
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
                 style={{
-                  left: isMobile ? '0.5vh' : '0.5vh',
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   padding: '10px',
-                  borderRadius: '10px',
+                  borderRadius: '10px', 
                   width: '320px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   cursor: 'pointer',
-                  transform: `${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
+                  transform: `translateX(-50px) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
                   transition: 'all 0.3s ease-in-out',
-                  backdropFilter: 'blur(8px)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                   
-                    width: '200%',
-                    height: '100%',
-                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
-                    animation: 'shimmer 2s infinite linear',
-                  }
-                }}
+                  backdropFilter: 'blur(8px)', // Menambahkan efek blur
+                  WebkitBackdropFilter: 'blur(8px)', // Untuk support Safari
+                 }}
                 onClick={handleFormExpand}
               >
                 {!showContactForm ? (
@@ -518,7 +506,7 @@ export default function Objects() {
                         style={{
                           width: '100%',
                           border: '1px solid #e2e8f0',
-                          borderRadius: '10px',
+                           borderRadius: '10px',
                         }}
                         required
                       />
@@ -534,8 +522,7 @@ export default function Objects() {
                         style={{
                           width: '100%',
                           minHeight: isMobile ? '80px' : '100px',
-                          border: '1px solid #e2e8f0',
-                          borderRadius: '10px',
+                          border: '1px solid #e2e8f0'
                         }}
                         rows={isMobile ? "3" : "4"}
                         required
