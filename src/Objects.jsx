@@ -407,7 +407,7 @@ export default function Objects() {
             <Html position={[-5, 2, 0]} style={{
               position: 'fixed',
               bottom: isMobile ? '-7vh' : '-7vh',
-              left: isMobile ? '-12px' : '-12px',
+              left: isMobile ? '-9.5vh' : '-10vh',
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
@@ -431,7 +431,7 @@ export default function Objects() {
                     content: '""',
                     position: 'absolute',
                     top: 0,
-                    left: '-100%',
+                   
                     width: '200%',
                     height: '100%',
                     background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
