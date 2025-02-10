@@ -405,9 +405,9 @@ export default function Objects() {
           {modelLoaded && <Object />}
           {isFormVisible && (
             <Html position={[-5, 2, 0]} style={{
-              position: 'fixed',  // Bisa diganti dengan absolute sesuai kebutuhan
+              position: 'fixed',
               bottom: isMobile ? '-7vh' : '-7vh',
-              transform: isMobile ? 'translate(-50%, 50%)' : 'translateX(-50%)',
+              left: isMobile ? '-12px' : '-12px',
               justifyContent: 'center',
               alignItems: 'center',
               width: '100%',
@@ -419,11 +419,32 @@ export default function Objects() {
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   padding: '10px',
                   borderRadius: '10px',
-                  width: '300px',
+                  width: '320px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   cursor: 'pointer',
                   transform: `translateX(-50px) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
-                  transition: 'all 0.3s ease-in-out'
+                  transition: 'all 0.3s ease-in-out',
+                  backdropFilter: 'blur(8px)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: '-100%',
+                    width: '200%',
+                    height: '100%',
+                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.22), transparent)',
+                    animation: 'shimmer 2s infinite',
+                  },
+                  '@keyframes shimmer': {
+                    '0%': {
+                      transform: 'translateX(-100%)',
+                    },
+                    '100%': {
+                      transform: 'translateX(100%)',
+                    },
+                  }
                 }}
                 onClick={handleFormExpand}
               >
@@ -486,7 +507,8 @@ export default function Objects() {
                         className="w-full px-3 py-2 rounded-md"
                         style={{
                           width: '100%',
-                          border: '1px solid #e2e8f0'
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '10px',
                         }}
                         required
                       />
@@ -502,7 +524,8 @@ export default function Objects() {
                         className="w-full px-3 py-2 rounded-md"
                         style={{
                           width: '100%',
-                          border: '1px solid #e2e8f0'
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '10px',
                         }}
                         required
                       />
@@ -518,7 +541,8 @@ export default function Objects() {
                         style={{
                           width: '100%',
                           minHeight: isMobile ? '80px' : '100px',
-                          border: '1px solid #e2e8f0'
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '10px',
                         }}
                         rows={isMobile ? "3" : "4"}
                         required
