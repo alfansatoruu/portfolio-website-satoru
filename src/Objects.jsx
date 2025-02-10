@@ -239,18 +239,18 @@ export default function Objects() {
         bgaudioRef.current.currentTime = 0;
         setIsPlaying(false);
       }
-  
+
       setShowContactForm(false);
       setIsExpanded(false);
-  
+
       const initialPosition = isMobile ? [-3, 30, 80] : [7, 6, 13];
-      // Tambahkan transition duration pada setPosition
+
       await cameraControlRef.current.setPosition(...initialPosition, true, 800);
       transitaudio.play();
-  
+
       setTimeout(() => {
         const radiansRotation = (260 * Math.PI) / 180;
-        // Tambahkan transition duration pada rotate
+
         cameraControlRef.current.rotate(radiansRotation, 0, true, 1000);
         transitaudio.play();
         setIsRotated(true);
@@ -324,7 +324,7 @@ export default function Objects() {
     e.preventDefault();
     setEmailStatus({ message: '', type: '' });
 
-    // Validasi format email
+
     if (!isValidEmail(formData.user_email)) {
       setEmailStatus({ message: 'Invalid email format. Please enter a valid email.', type: 'error' });
       return;
@@ -355,7 +355,7 @@ export default function Objects() {
         message: <span style={{ color: 'green' }}>Message sent successfully!</span>,
         type: 'success'
       });
-      
+
 
       setFormData({
         user_name: '',
@@ -405,10 +405,12 @@ export default function Objects() {
           {modelLoaded && <Object />}
           {isFormVisible && (
             <Html position={[-5, 2, 0]} style={{
-              bottom: isMobile ? '-10vh' : '-14vh',
+              position: 'fixed',  // Bisa diganti dengan absolute sesuai kebutuhan
+              bottom: isMobile ? '-7vh' : '-7vh',
               justifyContent: 'center',
               alignItems: 'center',
-              width: '100%'
+              width: '100%',
+              height: '200px',
             }}>
               <div
                 className={`contact-form-container transition-all duration-500 ${isExpanded ? 'scale-100 opacity-100' : 'scale-95 opacity-90'}`}
@@ -434,7 +436,7 @@ export default function Objects() {
                         alignItems: 'center',
                         gap: '16px',
                         padding: '16px',
-                     
+
                       }}
                     >
                       <h5 className="text-lg font-bold mb-2">Contact Satoru</h5>
