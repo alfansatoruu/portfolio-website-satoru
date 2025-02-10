@@ -422,7 +422,7 @@ export default function Objects() {
                   width: '320px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   cursor: 'pointer',
-                  transform: `translateX(-50px) ${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
+                  transform: `${isExpanded ? 'scale(1)' : 'scale(0.95)'}`,
                   transition: 'all 0.3s ease-in-out',
                   backdropFilter: 'blur(8px)',
                   position: 'relative',
@@ -434,16 +434,8 @@ export default function Objects() {
                     left: '-100%',
                     width: '200%',
                     height: '100%',
-                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.22), transparent)',
-                    animation: 'shimmer 2s infinite',
-                  },
-                  '@keyframes shimmer': {
-                    '0%': {
-                      transform: 'translateX(-100%)',
-                    },
-                    '100%': {
-                      transform: 'translateX(100%)',
-                    },
+                    background: 'linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                    animation: 'shimmer 2s infinite linear',
                   }
                 }}
                 onClick={handleFormExpand}
