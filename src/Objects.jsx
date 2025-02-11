@@ -153,8 +153,8 @@ export default function Objects() {
     user_email: '',
     message: ''
   });
-  const bgaudioRef = useRef(new Audio('./humnava.mp3'));
-  const transitaudio = new Audio('./whoosh.mp3');
+  const bgaudioRef = useRef(new Audio('./piano.mp3'));
+  const transitaudio = new Audio('./portal-button-sound-effect-ezmp3cc_pRoIVY5K.mp3');
   const isMobile = window.innerWidth < 768;
 
   useGLTF.preload('./scene.gltf');
